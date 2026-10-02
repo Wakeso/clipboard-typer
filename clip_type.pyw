@@ -8,7 +8,7 @@
     1. 双击本文件(clip_type.pyw), 脚本在后台常驻(无窗口, 任务管理器里是 pythonw.exe);
     2. 复制任意文本(中英文/数字/标点/emoji 均可);
     3. 鼠标点击目标输入位置(让光标落在那里);
-    4. 按 Ctrl+Shift+V, 脚本逐字打出剪贴板内容。
+    4. 按 Ctrl+Alt+V, 脚本逐字打出剪贴板内容。
 
     打字过程中按 Esc 随时中止;
     按 Ctrl+Alt+Q 退出脚本。
@@ -32,8 +32,10 @@ from pynput import keyboard
 from pynput.keyboard import Controller, GlobalHotKeys, Key
 
 # ==================== 可调参数 ====================
-HOTKEY_TYPE = '<ctrl>+<shift>+v'   # 触发打字的热键
-HOTKEY_QUIT = '<ctrl>+<alt>+q'     # 退出脚本的热键
+# 注意: 不要用 Ctrl+Shift+V, Word/VS Code/Teams 等大量软件把它定义为
+# "粘贴为纯文本", 按下瞬间目标软件会先粘贴一遍, 导致内容出现两份。
+HOTKEY_TYPE = '<ctrl>+<alt>+v'    # 触发打字的热键
+HOTKEY_QUIT = '<ctrl>+<alt>+q'    # 退出脚本的热键
 
 MIN_DELAY = 0.04      # 相邻两字符最小间隔(秒)
 MAX_DELAY = 0.12      # 相邻两字符最大间隔(秒)
